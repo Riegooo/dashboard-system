@@ -22,7 +22,7 @@ Add the following script to your `package.json`:
 
 ```json
 "scripts": {
-  "start": "node app.js"
+  "start": "node index.js"
 }
 ```
 
