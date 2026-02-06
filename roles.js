@@ -9,11 +9,10 @@ function adminRole(user, users) {
         lines(30, "=")
         console.log(`Admin Dashboard (${user.username})`);
         lines(30, "=")
-        console.log("1. Manage Users");
-        console.log("2. Change User Role");
-        console.log("3. Toggle User Status");
-        console.log("4. My Profile");
-        console.log("5. Logout");
+        let options = ["Manage Users", "Change User Role", "Toggle User Status", "My Profile", "Logout"]
+        options.forEach((i, index) => {
+            console.log(`${1 + index}. ${i}`);
+        })
         lines(30, "=")
         let choice = parseInt(prompt("Choose: "));
 
@@ -86,10 +85,10 @@ function modRole(user, users) {
         lines(30, "=")
         console.log(`moderator Dashboard (${user.username})`);
         lines(30, "=")
-        console.log("1. View Users");
-        console.log("2. Toggle User Status");
-        console.log("3. My Profile");
-        console.log("4. Logout");
+        let options = ["View Users", "Toggle User Status", "My Profile", "Logout"]
+        options.forEach((i, index) => {
+            console.log(`${1 + index}. ${i}`);
+        })
         lines(30, "=")
 
         let choice = parseInt(prompt("Choose: "));
@@ -147,10 +146,10 @@ function guestRole(user, users) {
         lines(30, "=")
         console.log(`Guest Dashboard (${user.username})`);
         lines(30, "=")
-        console.log(`Guest Dashboard (${user.username})`);
-        console.log("1. View Profile");
-        console.log("2. Change Password");
-        console.log("3. Logout");
+        let options = ["View Profile", "Change Password", "Logout"]
+        options.forEach((i, index) => {
+            console.log(`${1 + index}. ${i}`);
+        })
         lines(30, "=")
 
         let choice = parseInt(prompt("Choose: "));
