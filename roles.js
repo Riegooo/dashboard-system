@@ -5,12 +5,16 @@ const { lines, space } = require('./utils');
 function adminRole(user, users) {
     let running = true;
     while(running) {
-        console.log(`\nAdmin Dashboard (${user.username})`);
+        space();
+        lines(30, "=")
+        console.log(`Admin Dashboard (${user.username})`);
+        lines(30, "=")
         console.log("1. Manage Users");
         console.log("2. Change User Role");
         console.log("3. Toggle User Status");
         console.log("4. My Profile");
         console.log("5. Logout");
+        lines(30, "=")
         let choice = parseInt(prompt("Choose: "));
 
         if (choice === 1) manageUsers(users);
@@ -23,11 +27,20 @@ function adminRole(user, users) {
 }
 
 function manageUsers(users) {
-    console.log("\nUSERS LIST");
+    lines(30, "=")
+    console.log("USERS LIST username/role/status");
+    lines(30, "=")
     users.forEach((u, i) => console.log(`${i+1}. ${u.username} | ${u.role} | ${u.isActive}`));
+    lines(30, "=")
 }
 
 function toggleUserStatus(users) {
+    space()
+    lines(30, "=")
+    console.log("USER STATUS");
+    lines(30, "=")
+    users.forEach(i => {console.log(`${i.username} | Status : ${i.isActive}`);})
+    lines(30, "=")
     let username = prompt("Enter username to change status: ").trim().toLowerCase();
     let user = users.find(u => u.username === username);
     if (!user) console.log("User not found.");
@@ -39,6 +52,12 @@ function toggleUserStatus(users) {
 }
 
 function changeUserRole(users) {
+    space()
+    lines(30, "=")
+    console.log("USER ROLES");
+    lines(30, "=")
+    users.forEach(i => {console.log(`${i.username} | Role : ${i.role}`);})
+    lines(30, "=")
     let username = prompt("Enter username to change role: ").trim().toLowerCase();
     let user = users.find(u => u.username === username);
     if (!user) console.log("User not found.");
@@ -50,29 +69,45 @@ function changeUserRole(users) {
 }
 
 function adminProfile(user) {
+    space();
+    lines(30, "-");
+    console.log("YOUR PROFILE");
+    lines(30, "-");
     console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
+    lines(30, "-");
+    space();
 }
 
 // ----------------- MOD -----------------
 function modRole(user, users) {
     let running = true;
     while(running){
-        console.log(`\nModerator Dashboard (${user.username})`);
+        space();
+        lines(30, "=")
+        console.log(`moderator Dashboard (${user.username})`);
+        lines(30, "=")
         console.log("1. View Users");
         console.log("2. Toggle User Status");
         console.log("3. My Profile");
         console.log("4. Logout");
+        lines(30, "=")
 
         let choice = parseInt(prompt("Choose: "));
-        if (choice === 1) users.forEach((u,i)=> console.log(`${i+1}. ${u.username} | ${u.role} | ${u.isActive}`));
+        if (choice === 1) viewUsers(users)
         else if (choice === 2) modToggleStatus(users);
-        else if (choice === 3) console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
+        else if (choice === 3) modProfile(user);
         else if (choice === 4) running = false;
         else console.log("Invalid option.");
     }
 }
 
 function modToggleStatus(users) {
+    space()
+    lines(30, "=")
+    console.log("USER STATUS");
+    lines(30, "=")
+    users.forEach(i => {console.log(`${i.username} | Status : ${i.isActive}`);})
+    lines(30, "=")
     let username = prompt("Enter username to change status: ").trim().toLowerCase();
     let user = users.find(u => u.username === username);
     if (!user) console.log("User not found.");
@@ -84,17 +119,42 @@ function modToggleStatus(users) {
     }
 }
 
+function viewUsers(users){
+    space();
+    lines(30, "=")
+    console.log("USERS LIST username/role/status");
+    lines(30, "=")
+    users.forEach((u, i) => console.log(`${i+1}. ${u.username} | ${u.role} | ${u.isActive}`));
+    lines(30, "=")
+    space();
+}
+
+function modProfile(user) {
+    space();
+    lines(30, "-");
+    console.log("YOUR PROFILE");
+    lines(30, "-");
+    console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
+    lines(30, "-");
+    space();
+}
+
 // ----------------- GUEST -----------------
 function guestRole(user, users) {
     let running = true;
     while(running){
-        console.log(`\nGuest Dashboard (${user.username})`);
+        space();
+        lines(30, "=")
+        console.log(`Guest Dashboard (${user.username})`);
+        lines(30, "=")
+        console.log(`Guest Dashboard (${user.username})`);
         console.log("1. View Profile");
         console.log("2. Change Password");
         console.log("3. Logout");
+        lines(30, "=")
 
         let choice = parseInt(prompt("Choose: "));
-        if (choice === 1) console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
+        if (choice === 1) guestProfile(user);
         else if (choice === 2) changePassword(user);
         else if (choice === 3) running = false;
         else console.log("Invalid option.");
@@ -102,6 +162,10 @@ function guestRole(user, users) {
 }
 
 function changePassword(user){
+    space();
+    lines(30, "-")
+    console.log("Change Password");
+    lines(30, "-")
     let oldPass = prompt("Enter old password: ").trim();
     if (oldPass !== user.password) return console.log("Incorrect old password.");
     let newPass = prompt("Enter new password: ").trim();
@@ -109,6 +173,16 @@ function changePassword(user){
     if (newPass !== confirm) return console.log("Passwords do not match.");
     user.password = newPass;
     console.log("Password updated!");
+}
+
+function guestProfile(user) {
+    space();
+    lines(30, "-");
+    console.log("YOUR PROFILE");
+    lines(30, "-");
+    console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
+    lines(30, "-");
+    space();
 }
 
 module.exports = { adminRole, modRole, guestRole };
