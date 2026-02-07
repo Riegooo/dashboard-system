@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')();
 const { mainSystem } = require('./main');
+const { lines, space } = require('./utils')
 
 function roleApproval(requestedRole, approvalCode, defaultRole = "guest") {
     if (requestedRole === defaultRole) return defaultRole;
@@ -31,9 +32,10 @@ function registrationSystem(users, defaultRole = "guest", approvalCode = "Secret
     let usernameIsRunning = true;
 
     while(usernameIsRunning){
-        console.log("\n==============================");
+        console.log();
+        lines(30, "=")
         console.log("REGISTRATION ACCOUNT");
-        console.log("==============================");
+        lines(30, "=")
 
         let createUsername = prompt("Create username: ").trim().toLowerCase();
 
@@ -62,7 +64,10 @@ function registrationSystem(users, defaultRole = "guest", approvalCode = "Secret
                             role: assignedRole,
                             isActive: true
                         });
-                        console.log("\nAccount created! You may now login.\n");
+                        console.log();
+                        lines(30, "-")
+                        console.log("Account created! You may now login.");
+                        lines(30, "-")
                         return;
                     }
                 }
@@ -76,9 +81,10 @@ function loginSystem(users) {
     let isRunning = true;
 
     while(isRunning){
-        console.log("\n==============================");
+        console.log();
+        lines(30, "=")
         console.log("LOGIN ACCOUNT");
-        console.log("==============================");
+        lines(30, "=")
 
         let logUsername = prompt("Enter your username: ").trim().toLowerCase();
         let findUser = users.find(u => u.username === logUsername);

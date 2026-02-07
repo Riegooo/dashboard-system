@@ -26,6 +26,7 @@ function adminRole(user, users) {
 }
 
 function manageUsers(users) {
+    space()
     lines(30, "=")
     console.log("USERS LIST username/role/status");
     lines(30, "=")
