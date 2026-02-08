@@ -3,7 +3,12 @@ const { registrationSystem, loginSystem } = require('./auth');
 const { adminRole, modRole, guestRole } = require('./roles');
 const { lines, space } = require('./utils');
 
-let users = [];
+let users = [
+    // username: createUsername,
+    // passsword: createPassword,
+    // role: assignedRole,
+    //  isActive: true
+];
 
 function dashboardSystem(user){
     if (user.role === "admin") adminRole(user, users);

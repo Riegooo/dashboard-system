@@ -9,7 +9,7 @@ function adminRole(user, users) {
         lines(30, "=")
         console.log(`Admin Dashboard (${user.username})`);
         lines(30, "=")
-        let options = ["Manage Users", "Change User Role", "Toggle User Status", "My Profile", "Logout"]
+        let options = ["View Users", "Change User Role", "Toggle User Status", "My Profile", "Logout"]
         options.forEach((i, index) => {
             console.log(`${1 + index}. ${i}`);
         })
