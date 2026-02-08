@@ -16,7 +16,7 @@ function adminRole(user, users) {
         lines(30, "=")
         let choice = parseInt(prompt("Choose: "));
 
-        if (choice === 1) manageUsers(users);
+        if (choice === 1) viewUsers(users);
         else if (choice === 2) changeUserRole(users);
         else if (choice === 3) toggleUserStatus(users);
         else if (choice === 4) adminProfile(user);
@@ -25,7 +25,7 @@ function adminRole(user, users) {
     }
 }
 
-function manageUsers(users) {
+function viewUsers(users) {
     space()
     lines(30, "=")
     console.log("USERS LIST username/role/status");
@@ -64,7 +64,9 @@ function changeUserRole(users) {
     else {
         let newRole = prompt("Enter new role (admin/mod/guest): ").trim().toLowerCase();
         if (!["admin","mod","guest"].includes(newRole)) console.log("Invalid role.");
-        else user.role = newRole;
+        else 
+            user.role = newRole
+            console.log("Role updated successfully for the selected user.");
     }
 }
 
