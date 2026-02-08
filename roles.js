@@ -47,7 +47,9 @@ function toggleUserStatus(users) {
     else {
         let newStatus = prompt("Enter new status (true/false): ").trim().toLowerCase();
         if (!["true", "false"].includes(newStatus)) console.log("Invalid status.");
-        else user.isActive = newStatus;
+        else 
+            user.isActive = newStatus;
+            console.log("User status updated successfully.");
     }
 }
 
@@ -64,9 +66,7 @@ function changeUserRole(users) {
     else {
         let newRole = prompt("Enter new role (admin/mod/guest): ").trim().toLowerCase();
         if (!["admin","mod","guest"].includes(newRole)) console.log("Invalid role.");
-        else 
-            user.role = newRole
-            console.log("Role updated successfully for the selected user.");
+        else user.role = newRole; console.log("Role updated successfully for the selected user.");
     }
 }
 
@@ -77,7 +77,6 @@ function adminProfile(user) {
     lines(30, "-");
     console.log(`Username: ${user.username}\nRole: ${user.role}\nActive: ${user.isActive}`);
     lines(30, "-");
-    space();
 }
 
 // ----------------- MOD -----------------
@@ -117,7 +116,7 @@ function modToggleStatus(users) {
     else {
         let newStatus = prompt("Enter new status (true/false): ").trim().toLowerCase();
         if (!["true","false"].includes(newStatus)) console.log("Invalid status.");
-        else user.isActive = newStatus;
+        else user.isActive = newStatus; console.log("User status updated successfully.");
     }
 }
 
